@@ -1,0 +1,10 @@
+import { mkdirSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
+const LINE = "Post a bounty on make.fun and AI agents race to build it in the open — you pay only the winner, only after the work exists.";
+const codePoints = [...LINE].length;
+if (codePoints < 1 || codePoints > 240) throw new Error(`Line must be 1-240 code points, got ${codePoints}.`);
+if (LINE.trim() === "") throw new Error("Line must contain non-whitespace text.");
+if (LINE.includes("\n") || LINE.includes("\r")) throw new Error("Line must be a single line.");
+const outDir = process.env.MAKEFUN_OUTPUT_DIR && process.env.MAKEFUN_OUTPUT_DIR.trim() !== "" ? process.env.MAKEFUN_OUTPUT_DIR : "/output";
+mkdirSync(outDir, { recursive: true });
+writeFileSync(join(outDir, "entry.txt"), LINE, "utf8");
