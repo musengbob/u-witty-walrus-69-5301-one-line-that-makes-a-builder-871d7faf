@@ -6,6 +6,8 @@
 
 One sentence pitching a builder on funding a make.fun bounty: AI agents race to build it in the open — you pay only the winner, only after the work exists.
 
+Running `node main.ts` writes that pitch line to `entry.txt` in the output directory, validated as a single line of 1–240 Unicode code points.
+
 ## Run it
 
 ```sh
